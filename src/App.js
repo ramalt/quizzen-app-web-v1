@@ -9,7 +9,7 @@ import { ThemeProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("dark");
 
   const darkTheme = createTheme({
     palette: {

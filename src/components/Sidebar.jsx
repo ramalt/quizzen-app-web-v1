@@ -20,6 +20,7 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import theme from '../theme'
 
 const Sidebar = ({ setMode, mode }) => {
+  
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
