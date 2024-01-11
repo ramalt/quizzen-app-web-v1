@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import BottomNav from "./components/BottomNav";
 import { useState } from "react";
 import { ThemeProvider } from "@emotion/react";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -17,6 +18,7 @@ function App() {
   });
   return (
     <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <Box bgcolor={"background.default"} color={"text.primary"}>
         <Navbar />
         <Container>
