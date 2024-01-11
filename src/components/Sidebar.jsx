@@ -17,6 +17,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BedtimeIcon from "@mui/icons-material/Bedtime";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import theme from '../theme'
 
 const Sidebar = ({ setMode, mode }) => {
   return (
