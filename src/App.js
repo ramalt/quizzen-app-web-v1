@@ -9,7 +9,7 @@ import { ThemeProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("light");
 
   const darkTheme = createTheme({
     palette: {
@@ -28,7 +28,7 @@ function App() {
             flex={1}
             justifyContent={"space-between"}
           >
-            <Sidebar />
+            <Sidebar setMode={setMode} mode={mode} />
             <Feed />
             <Rightbar />
           </Stack>
