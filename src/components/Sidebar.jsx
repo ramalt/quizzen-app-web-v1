@@ -19,70 +19,71 @@ const Sidebar = () => {
   return (
     <Box
       flex={1}
-      p={1}
+      p={2}
       sx={{ display: { xs: "none", sm: "block" } }}
-      position="sticky"
     >
-      <List>
-        <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <Typography variant="h6">QUIZZEN</Typography>
-            </ListItemIcon>
-          </ListItemButton>
-        </ListItem>
-        {/* HOME */}
-        <ListItem components="a" href="#home">
-          <ListItemButton>
-            <ListItemIcon>
-              <HomeIcon color="white" />
-            </ListItemIcon>
-            <ListItemText primary="Homepage" />
-          </ListItemButton>
-        </ListItem>
+      <Box position="fixed">
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Typography variant="h6">QUIZZEN</Typography>
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+          {/* HOME */}
+          <ListItem disablePadding>
+            <ListItemButton components="a" href="#home">
+              <ListItemIcon>
+                <HomeIcon color="white" />
+              </ListItemIcon>
+              <ListItemText primary="Homepage" />
+            </ListItemButton>
+          </ListItem>
 
-        {/* EXPLORE */}
-        <ListItem components="a" href="#home">
-          <ListItemButton>
-            <ListItemIcon>
-              <ExploreIcon color="white" />
-            </ListItemIcon>
-            <ListItemText primary="Explore" />
-          </ListItemButton>
-        </ListItem>
+          {/* EXPLORE */}
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <ExploreIcon color="white" />
+              </ListItemIcon>
+              <ListItemText primary="Explore" />
+            </ListItemButton>
+          </ListItem>
 
-        {/* NEW */}
-        <ListItem components="a" href="#home">
-          <ListItemButton>
-            <ListItemIcon>
-              <AddCircleIcon color="white" />
-            </ListItemIcon>
-            <ListItemText primary="New" />
-          </ListItemButton>
-        </ListItem>
+          {/* NEW */}
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AddCircleIcon color="white" />
+              </ListItemIcon>
+              <ListItemText primary="New" />
+            </ListItemButton>
+          </ListItem>
 
-        {/* NOTIFICATIONS */}
-        <ListItem components="a" href="#home">
-          <ListItemButton>
-            <ListItemIcon>
-              <Badge badgeContent={4} color="warning">
-                <MailIcon color="white" />
-              </Badge>
-            </ListItemIcon>
-            <ListItemText primary="Notifications" />
-          </ListItemButton>
-        </ListItem>
+          {/* NOTIFICATIONS */}
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Badge badgeContent={4} color="warning">
+                  <MailIcon color="white" />
+                </Badge>
+              </ListItemIcon>
+              <ListItemText primary="Notifications" />
+            </ListItemButton>
+          </ListItem>
 
-        {/* PROFILE */}
-        <ListItem components="a" href="#home">
-          <ListItemButton>
-            <ListItemIcon>
-              <AccountCircleIcon color="white" />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItemButton>
-        </ListItem>
-      </List>
+          {/* PROFILE */}
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AccountCircleIcon color="white" />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
     </Box>
   );
 };

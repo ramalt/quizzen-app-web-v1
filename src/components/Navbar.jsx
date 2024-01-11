@@ -15,7 +15,7 @@ import React from "react";
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
-  background: "white",
+  background: "backround.default",
 });
 
 const Icons = styled(Box)(({ theme }) => ({

@@ -10,11 +10,11 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import CommentIcon from "@mui/icons-material/Comment";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import { Checkbox, Stack } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,18 +30,21 @@ const ExpandMore = styled((props) => {
 export default function PostCard() {
   const [expanded, setExpanded] = React.useState(false);
 
+  const StyledCard = styled(Card)({});
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card component={"a"} href="#postid" sx={{ textDecoration: "none" }}>
+    <Card component={"a"} href="#postid" sx={{ textDecoration: "none" , margin : '5px'}}>
       <CardHeader
         avatar={
           <Avatar
             sx={{ bgcolor: red[500] }}
             aria-label="recipe"
-            src="https://i.scdn.co/image/ab67616d0000b273d64517a4059310eeb0a889c3" />
+            src="https://i.scdn.co/image/ab67616d0000b273d64517a4059310eeb0a889c3"
+          />
         }
         action={
           <IconButton aria-label="settings">
@@ -58,18 +61,29 @@ export default function PostCard() {
           mussels, if you like.
         </Typography>
       </CardContent>
-      <CardMedia
-        component="img"
-        height="194"
-        image="https://i.pinimg.com/550x/e7/55/09/e75509d701d000df3c2accb5816d2a02.jpg"
-        alt="Paella dish"
-      />
+      <Stack direction={"row"} gap={1}>
+        <CardMedia
+          component="img"
+          height="194"
+          image="https://i.pinimg.com/550x/e7/55/09/e75509d701d000df3c2accb5816d2a02.jpg"
+          alt="Paella dish"
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image="https://i.pinimg.com/236x/bf/e6/86/bfe68610b2a537611b214434ac6ba86e.jpg"
+          alt="Paella dish"
+        />
+      </Stack>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <Checkbox
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite color="error" />}
+          />
         </IconButton>
         <IconButton aria-label="share">
-          <CommentIcon />
+          <ChatBubbleOutlineIcon />
         </IconButton>
         <ExpandMore
           expand={expanded}

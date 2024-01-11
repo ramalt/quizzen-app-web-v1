@@ -1,7 +1,6 @@
-import { Box } from '@mui/material'
-import React from 'react'
-import PostCard from './PostCard';
-
+import { Box } from "@mui/material";
+import React from "react";
+import PostCard from "./PostCard";
 
 const Feed = () => {
   return (
@@ -11,6 +10,6 @@ const Feed = () => {
       <PostCard />
     </Box>
   );
-}
+};
 
-export default Feed
+export default Feed;
