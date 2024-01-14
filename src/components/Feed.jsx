@@ -21,10 +21,17 @@ const Feed = () => {
     <Box flex={4} p={1}>
       {posts.map((p) => (
         <PostCard
-          id = {p.id}
+          id={p.id}
           title={p.title}
           description={p.description}
+          images = {p.images}
           createdDate={p.createdDate}
+          userId={p.user.id}
+          userName={p.user.userName}
+          userImg={p.user.profileImg}
+          examTag={p.tags.exam}
+          subjectTag={p.tags.subject}
+          topicTag={p.tags.topic}
         />
       ))}
     </Box>

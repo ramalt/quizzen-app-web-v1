@@ -9,11 +9,11 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+import { indigo, red } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import { Box, Checkbox, Stack } from "@mui/material";
+import { Box, Checkbox, Chip, Stack } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const ExpandMore = styled((props) => {
@@ -27,9 +27,21 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function PostCard({ key, id, title, description, createdDate }) {
+export default function PostCard({
+  id,
+  title,
+  description,
+  images,
+  createdDate,
+  userId,
+  userName,
+  userImg,
+  examTag,
+  subjectTag,
+  topicTag,
+}) {
   const [expanded, setExpanded] = React.useState(false);
-  let postUrl = `http://localhost:3000/${id}`;
+  let postUrl = `http://localhost:3000/${userId}`;
 
   const StyledCard = styled(Card)({});
 
@@ -44,7 +56,7 @@ export default function PostCard({ key, id, title, description, createdDate }) {
           <Avatar
             sx={{ bgcolor: red[500] }}
             aria-label="recipe"
-            src="https://i.scdn.co/image/ab67616d0000b273d64517a4059310eeb0a889c3"
+            src={userImg}
           />
         }
         action={
@@ -52,31 +64,40 @@ export default function PostCard({ key, id, title, description, createdDate }) {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader={createdDate}
+        title={userName}
+        subheader={new Date(createdDate).toLocaleTimeString()}
         component={"a"}
-        href="#profile"
+        href={`http://localhost:3000/${userId}`}
         sx={{ textDecoration: "none", color: "text.primary" }}
       />
-      <Box component={"a"} href={postUrl} sx={{ textDecoration: "none" }}>
+      <Box
+        component={"a"}
+        href={`http://localhost:3000/${id}`}
+        sx={{ textDecoration: "none" }}
+      >
         <CardContent>
           <Typography variant="h6" color="text.secondary">
             {title}
           </Typography>
         </CardContent>
+
         <Stack direction={"row"} gap={1}>
-          <CardMedia
-            component="img"
-            height="194"
-            image="https://i.pinimg.com/550x/e7/55/09/e75509d701d000df3c2accb5816d2a02.jpg"
-            alt="Paella dish"
-          />
-          <CardMedia
-            component="img"
-            height="194"
-            image="https://i.pinimg.com/236x/bf/e6/86/bfe68610b2a537611b214434ac6ba86e.jpg"
-            alt="Paella dish"
-          />
+          {images.length > 0 &&
+            images.map((img, index) => (
+              <CardMedia
+                key={index}
+                component="img"
+                height="194"
+                image={img.url}
+                alt={`Image ${index + 1}`}
+              />
+            ))}
+        </Stack>
+
+        <Stack direction={"row"} gap={1} margin={1}>
+          <Chip label={"#" + examTag} size="small" color="warning" />
+          <Chip label={"#" + subjectTag} size="small" color="secondary" />
+          <Chip label={"#" + topicTag} size="small" variant="outlined" />
         </Stack>
       </Box>
 
