@@ -21,7 +21,7 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <BrowserRouter>
-        <Layout setMode={setMode} mode={mode} sideChildren={"righttt"}>
+        <Layout setMode={setMode} mode={mode}>
           <Routes>
             <Route path="/" element={<Feed />} />
             <Route path="profile" element={<Profile />} />

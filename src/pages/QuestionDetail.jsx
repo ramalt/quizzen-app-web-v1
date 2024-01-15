@@ -153,9 +153,8 @@ const QuestionDetail = () => {
                 startIcon={<CreateIcon />}
                 sx={{
                   borderRadius: "30px",
-                  padding: "15px",
                   position: "fixed",
-                  bottom: "20px",
+                  bottom: "45px",
                   
                 }}
               >

@@ -76,7 +76,7 @@ const Sidebar = ({ setMode, mode }) => {
 
           {/* PROFILE */}
           <ListItem disablePadding>
-            <ListItemButton components="a" href="profile">
+            <ListItemButton components="a" href="/profile">
               <ListItemIcon>
                 <AccountCircleIcon color="white" />
               </ListItemIcon>
