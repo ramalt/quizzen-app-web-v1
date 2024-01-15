@@ -41,7 +41,6 @@ export default function PostCard({
   topicTag,
 }) {
   const [expanded, setExpanded] = React.useState(false);
-  let postUrl = `http://localhost:3000/${userId}`;
 
   const StyledCard = styled(Card)({});
 
@@ -67,12 +66,12 @@ export default function PostCard({
         title={userName}
         subheader={new Date(createdDate).toLocaleTimeString()}
         component={"a"}
-        href={`http://localhost:3000/${userId}`}
+        href={`/user/${userId}`}
         sx={{ textDecoration: "none", color: "text.primary" }}
       />
       <Box
         component={"a"}
-        href={`http://localhost:3000/${id}`}
+        href={`/question/${id}`}
         sx={{ textDecoration: "none" }}
       >
         <CardContent>

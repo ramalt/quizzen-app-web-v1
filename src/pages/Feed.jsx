@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import PostCard from "./PostCard";
+import PostCard from "../components/PostCard";
 import axios from "axios";
 
 const Feed = () => {

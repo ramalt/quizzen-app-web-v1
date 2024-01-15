@@ -1,12 +1,13 @@
-import { Box, Container, Stack, createTheme } from "@mui/material";
-import Feed from "./components/Feed";
-import Rightbar from "./components/Rightbar";
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
-import BottomNav from "./components/BottomNav";
+import { createTheme } from "@mui/material";
+import Feed from "./pages/Feed";
 import { useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Profile from "./pages/Profile";
+import QuestionDetail from "./pages/QuestionDetail";
+import UserDetail from "./pages/UserDetail";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -19,22 +20,16 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Navbar />
-        <Container>
-          <Stack
-            direction={"row"}
-            spacing={1}
-            flex={1}
-            justifyContent={"space-between"}
-          >
-            <Sidebar setMode={setMode} mode={mode} />
-            <Feed />
-            <Rightbar />
-          </Stack>
-        </Container>
-        <BottomNav />
-      </Box>
+      <BrowserRouter>
+        <Layout setMode={setMode} mode={mode} sideChildren={"righttt"}>
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="question/:questionId" element={<QuestionDetail />} />
+            <Route path="user/:userId" element={<UserDetail />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

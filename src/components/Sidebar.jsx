@@ -17,16 +17,15 @@ import MailIcon from "@mui/icons-material/Mail";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BedtimeIcon from "@mui/icons-material/Bedtime";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import theme from '../theme'
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ setMode, mode }) => {
-  
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
         <List>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton components="a" href="/">
               <ListItemIcon>
                 <Typography variant="h6">QUIZZEN</Typography>
               </ListItemIcon>
@@ -34,7 +33,7 @@ const Sidebar = ({ setMode, mode }) => {
           </ListItem>
           {/* HOME */}
           <ListItem disablePadding>
-            <ListItemButton components="a" href="#home">
+            <ListItemButton components="a" href="/">
               <ListItemIcon>
                 <HomeIcon color="white" />
               </ListItemIcon>
@@ -76,7 +75,7 @@ const Sidebar = ({ setMode, mode }) => {
 
           {/* PROFILE */}
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton components="a" href="profile">
               <ListItemIcon>
                 <AccountCircleIcon color="white" />
               </ListItemIcon>

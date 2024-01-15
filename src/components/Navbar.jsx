@@ -4,6 +4,7 @@ import {
   Avatar,
   Badge,
   Box,
+  Button,
   Icon,
   Stack,
   Toolbar,
@@ -28,9 +29,14 @@ const Navbar = () => {
   return (
     <AppBar position="sticky" sx={{ display: { xs: "none", sm: "block" } }}>
       <StyledToolbar>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          QUIZZEN
-        </Typography>
+        <Button href="/" color="warning">
+          <Typography
+            variant="h6"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            QUIZZEN
+          </Typography>
+        </Button>
         <Typography variant="h6" sx={{ display: { xs: "block", sm: "none" } }}>
           Q
         </Typography>
