@@ -42,14 +42,12 @@ export default function PostCard({
 }) {
   const [expanded, setExpanded] = React.useState(false);
 
-  const StyledCard = styled(Card)({});
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card sx={{ textDecoration: "none", margin: "5px" }}>
+    <Card sx={{ textDecoration: "none", margin: {xs: "3px", md: "5px"}, width: {xs: "99%" }}}>
       <CardHeader
         avatar={
           <Avatar
