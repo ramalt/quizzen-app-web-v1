@@ -24,8 +24,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import CreateIcon from "@mui/icons-material/Create";
-
-
+import AnswerPopup from "../components/AnswerPopup";
 
 const QuestionDetail = () => {
   const { questionId } = useParams();
@@ -33,6 +32,16 @@ const QuestionDetail = () => {
   const [answers, setAnswers] = useState();
 
   const [isLoading, setLoading] = useState(true);
+  const [openPopup, setOpenPopup] = useState(false);
+
+
+  const handleOpen = () => {
+    setOpenPopup(true);
+  };
+
+  const handleClose = () => {
+    setOpenPopup(false);
+  };
 
   const fetchData = async () => {
     try {
@@ -154,14 +163,21 @@ const QuestionDetail = () => {
                 sx={{
                   borderRadius: "30px",
                   position: "fixed",
-                  bottom: "45px",
-                  
+                  bottom: {xs: "65px", md:"45px"}
                 }}
+                onClick={handleOpen}
               >
                 Yaz
               </Button>
             </Stack>
           </Box>
+          <AnswerPopup
+            open={openPopup}
+            setOpenPopup={setOpenPopup}
+            title={post.title}
+            onClose={handleClose}
+            questionId={questionId}
+          />
 
           {/* ANSWERS */}
 
