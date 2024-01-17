@@ -15,10 +15,9 @@ import {
   Checkbox,
   Chip,
   LinearProgress,
-  Skeleton,
   Stack,
 } from "@mui/material";
-import { Favorite, FavoriteBorder, LocalDining } from "@mui/icons-material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";

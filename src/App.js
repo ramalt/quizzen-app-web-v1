@@ -8,6 +8,7 @@ import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
 import QuestionDetail from "./pages/QuestionDetail";
 import UserDetail from "./pages/UserDetail";
+import NewPost from "./pages/NewPost";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -27,6 +28,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="question/:questionId" element={<QuestionDetail />} />
             <Route path="user/:userId" element={<UserDetail />} />
+            <Route path="new" element={<NewPost />} />
           </Routes>
         </Layout>
       </BrowserRouter>

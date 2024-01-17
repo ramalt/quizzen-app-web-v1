@@ -26,7 +26,7 @@ const Sidebar = ({ setMode, mode }) => {
       <Box position="fixed">
         <List>
           <ListItem disablePadding>
-            <ListItemButton components="a" href="/" >
+            <ListItemButton components="a" href="/">
               <ListItemIcon>
                 <Typography variant="h6">QUIZZEN</Typography>
               </ListItemIcon>
@@ -54,7 +54,7 @@ const Sidebar = ({ setMode, mode }) => {
 
           {/* NEW */}
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton components="a" href="new">
               <ListItemIcon>
                 <AddCircleIcon color="white" />
               </ListItemIcon>
