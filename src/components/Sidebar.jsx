@@ -54,7 +54,7 @@ const Sidebar = ({ setMode, mode }) => {
 
           {/* NEW */}
           <ListItem disablePadding>
-            <ListItemButton components="a" href="new">
+            <ListItemButton components="a" href="/new">
               <ListItemIcon>
                 <AddCircleIcon color="white" />
               </ListItemIcon>

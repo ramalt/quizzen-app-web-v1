@@ -2,7 +2,7 @@ import { Autocomplete, Stack, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const AutoCompletes = ({ onChange, examId }) => {
+const AutoCompletes = ({ onChange, examId, setExamData }) => {
   const [subjects, setSubjects] = useState([]);
   const [topics, setTopics] = useState([]);
 
@@ -12,13 +12,23 @@ const AutoCompletes = ({ onChange, examId }) => {
   const handleSubjectSelect = async (newValue) => {
     setSubjectValue(newValue);
 
-    newValue && (await fetchTopics(newValue.id));
+    if (newValue != null) await fetchTopics(newValue.id);
+
+    console.log("subject Id: " + newValue.id);
   };
 
   const handleTopicSelect = (newValue) => {
     setTopicValue(newValue);
 
     //TODO:Submit Exam Datas here
+    setExamData({
+      subjectId: subjectValue.id,
+      topicId: newValue.id,
+    });
+
+    console.log("topic Id: " + newValue.id);
+
+    
   };
 
   const fetchExamSubjects = async () => {

@@ -8,12 +8,17 @@ import { LoadingButton } from "@mui/lab";
 import { Image } from "@mui/icons-material";
 import axios from "axios";
 import AutoCompletes from "../components/AutoCompletes";
+import { Navigate } from "react-router-dom";
 
+//TODO: Get From User
+const examId = "21C0A29F-D114-4142-BE53-047F1BBA1AF5";
+const userId = "f4bcd779-a978-436f-b816-bf806fc0886d";
 
 const NewPost = () => {
-
-  //TODO: Get From User
-  const examId = "21C0A29F-D114-4142-BE53-047F1BBA1AF5";
+  const [examData, setExamData] = useState({
+    subjectId: "",
+    topicId: "",
+  });
 
   const [data, setData] = useState({
     title: "",
@@ -21,7 +26,7 @@ const NewPost = () => {
     examId: examId,
     subjectId: "",
     topicId: "",
-    userId: "",
+    userId: userId,
   });
 
   const handleTitleChange = (event) => {
@@ -30,7 +35,6 @@ const NewPost = () => {
       ...prevData,
       title: value,
     }));
-    console.log(data);
   };
 
   const handleDescriptionChange = (event) => {
@@ -39,14 +43,22 @@ const NewPost = () => {
       ...prevData,
       description: value,
     }));
-
-    console.log(data);
   };
 
   const handleSubmit = async () => {
+    setData((prevData) => ({
+      ...prevData,
+      subjectId: examData.subjectId,
+      topicId: examData.topicId,
+    }));
+
     try {
       await axios
-        .post("http://localhost:5174/api/question", data)
+        .post("http://localhost:5174/api/question", data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
         .then((res) => {
           console.log(res);
         });
@@ -55,7 +67,9 @@ const NewPost = () => {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <Box flex={4} p={1}>
@@ -107,8 +121,7 @@ const NewPost = () => {
               }}
             />
             {/* EXAM SUBJECT TOPIC */}
-            <AutoCompletes examId={examId}/>
-
+            <AutoCompletes examId={examId} setExamData={setExamData} />
 
             {/* TODO: UPLOAD IMAGE */}
             <Box alignItems={"flex-start"}>
