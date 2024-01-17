@@ -71,7 +71,7 @@ const AutoCompletes = ({ onChange, examId }) => {
       <Autocomplete
         disablePortal
         // disabled={topics && true}
-        value={topics}
+        value={topicValue}
         onChange={(event, newValue) => {
           handleTopicSelect(newValue);
         }}
