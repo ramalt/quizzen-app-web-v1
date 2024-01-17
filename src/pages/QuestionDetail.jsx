@@ -88,7 +88,7 @@ const QuestionDetail = () => {
               title={post.user.fullName}
               subheader={new Date(post.createdDate).toLocaleTimeString()}
               component={"a"}
-              href={`user/${post.user.id}`}
+              href={`/user/${post.user.id}`}
               sx={{ textDecoration: "none", color: "text.primary" }}
             />
             <Box sx={{ textDecoration: "none" }}>
@@ -198,7 +198,7 @@ const QuestionDetail = () => {
                 title={p.user.fullName}
                 subheader={new Date(p.createdDate).toLocaleTimeString()}
                 component={"a"}
-                href={`user/${p.user.id}`}
+                href={`/user/${p.user.id}`}
                 sx={{ textDecoration: "none", color: "text.primary" }}
               />
               <Stack direction={"row"} p={1}>
