@@ -9,7 +9,8 @@ const Feed = () => {
   const fetchData = async () => {
     try {
       await axios.get("http://localhost:5174/api/Question").then((response) => {
-        setPosts(response.data);
+        setPosts(response.data.data);
+        console.log(response.data.data)
         setLoading(false);
       });
     } catch (error) {

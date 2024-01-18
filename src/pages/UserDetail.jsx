@@ -20,12 +20,12 @@ const UserDetail = () => {
         .get(`http://localhost:5174/api/User/${userId}`)
         .then((res) => {
           setUser({
-            firstName: res.data.firstName,
-            lastName: res.data.lastName,
-            userName: res.data.userName,
-            exam: res.data.exam,
-            email: res.data.email,
-            profileImg: res.data.profileImg,
+            firstName: res.data.data.firstName,
+            lastName: res.data.data.lastName,
+            userName: res.data.data.userName,
+            exam: res.data.data.exam,
+            email: res.data.data.email,
+            profileImg: res.data.data.profileImg,
           });
           console.log(res);
         });

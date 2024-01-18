@@ -8,13 +8,15 @@ import { LoadingButton } from "@mui/lab";
 import { Image } from "@mui/icons-material";
 import axios from "axios";
 import AutoCompletes from "../components/AutoCompletes";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //TODO: Get From User
 const examId = "21C0A29F-D114-4142-BE53-047F1BBA1AF5";
 const userId = "f4bcd779-a978-436f-b816-bf806fc0886d";
 
 const NewPost = () => {
+  const navigate = useNavigate();
+
   const [examData, setExamData] = useState({
     subjectId: "",
     topicId: "",
@@ -46,12 +48,6 @@ const NewPost = () => {
   };
 
   const handleSubmit = async () => {
-    setData((prevData) => ({
-      ...prevData,
-      subjectId: examData.subjectId,
-      topicId: examData.topicId,
-    }));
-
     try {
       await axios
         .post("http://localhost:5174/api/question", data, {
@@ -60,7 +56,8 @@ const NewPost = () => {
           },
         })
         .then((res) => {
-          console.log(res);
+          console.log(res)
+          navigate(`/question/${res.data.data}`)
         });
     } catch (error) {
       console.log(error);
@@ -68,7 +65,11 @@ const NewPost = () => {
   };
 
   useEffect(() => {
-    console.log(data);
+    setData((prevData) => ({
+      ...prevData,
+      subjectId: examData.subjectId,
+      topicId: examData.topicId,
+    }));
   }, [data]);
 
   return (

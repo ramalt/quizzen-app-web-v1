@@ -35,7 +35,7 @@ const AutoCompletes = ({ onChange, examId, setExamData }) => {
     await axios
       .get(`http://localhost:5174/api/Exam/subject?e=${examId}`)
       .then((res) => {
-        const mapped = res.data.map((subject) => ({
+        const mapped = res.data.data.map((subject) => ({
           label: subject.name,
           id: subject.id,
         }));
@@ -49,7 +49,7 @@ const AutoCompletes = ({ onChange, examId, setExamData }) => {
       await axios
         .get(`http://localhost:5174/api/Exam/topic?s=${subId}`)
         .then((res) => {
-          const mapped = res.data.map((topic) => ({
+          const mapped = res.data.data.map((topic) => ({
             label: topic.name,
             id: topic.id,
           }));

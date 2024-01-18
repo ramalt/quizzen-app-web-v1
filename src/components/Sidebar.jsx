@@ -20,7 +20,6 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = ({ setMode, mode }) => {
-
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
@@ -38,7 +37,10 @@ const Sidebar = ({ setMode, mode }) => {
               <ListItemIcon>
                 <HomeIcon color="white" />
               </ListItemIcon>
-              <ListItemText primary="Homepage" />
+              <ListItemText
+                primary="Homepage"
+                sx={{ display: { sm: "none", md: "block" } }}
+              />
             </ListItemButton>
           </ListItem>
 
@@ -48,7 +50,10 @@ const Sidebar = ({ setMode, mode }) => {
               <ListItemIcon>
                 <ExploreIcon color="white" />
               </ListItemIcon>
-              <ListItemText primary="Explore" />
+              <ListItemText
+                primary="Explore"
+                sx={{ display: { sm: "none", md: "block" } }}
+              />
             </ListItemButton>
           </ListItem>
 
@@ -58,7 +63,10 @@ const Sidebar = ({ setMode, mode }) => {
               <ListItemIcon>
                 <AddCircleIcon color="white" />
               </ListItemIcon>
-              <ListItemText primary="New" />
+              <ListItemText
+                primary="New"
+                sx={{ display: { sm: "none", md: "block" } }}
+              />
             </ListItemButton>
           </ListItem>
 
@@ -70,7 +78,10 @@ const Sidebar = ({ setMode, mode }) => {
                   <MailIcon color="white" />
                 </Badge>
               </ListItemIcon>
-              <ListItemText primary="Notifications" />
+              <ListItemText
+                primary="Notifications"
+                sx={{ display: { sm: "none", md: "block" } }}
+              />
             </ListItemButton>
           </ListItem>
 
@@ -80,7 +91,10 @@ const Sidebar = ({ setMode, mode }) => {
               <ListItemIcon>
                 <AccountCircleIcon color="white" />
               </ListItemIcon>
-              <ListItemText primary="Profile" />
+              <ListItemText
+                primary="Profile"
+                sx={{ display: { sm: "none", md: "block" } }}
+              />
             </ListItemButton>
           </ListItem>
 
@@ -97,6 +111,7 @@ const Sidebar = ({ setMode, mode }) => {
               <Switch
                 onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
                 color="warning"
+                sx={{ display: { sm: "none", md:"flex" } }}
               />
             </ListItemButton>
           </ListItem>

@@ -33,7 +33,6 @@ const QuestionDetail = () => {
   const [isLoading, setLoading] = useState(true);
   const [openPopup, setOpenPopup] = useState(false);
 
-
   const handleOpen = () => {
     setOpenPopup(true);
   };
@@ -47,14 +46,15 @@ const QuestionDetail = () => {
       await axios
         .get(`http://localhost:5174/api/Question/${questionId}`)
         .then((postResponse) => {
-          setPost(postResponse.data);
+          setPost(postResponse.data.data);
         });
 
       await axios
         .get(`http://localhost:5174/api/Answer?questionId=${questionId}`)
         .then((answersResponse) => {
-          setAnswers(answersResponse.data);
+          setAnswers(answersResponse.data.data);
           setLoading(false);
+
         });
     } catch (error) {
       console.error("API isteği başarısız oldu:", error);
@@ -162,7 +162,7 @@ const QuestionDetail = () => {
                 sx={{
                   borderRadius: "30px",
                   position: "fixed",
-                  bottom: {xs: "65px", md:"45px"}
+                  bottom: { xs: "65px", md: "45px" },
                 }}
                 onClick={handleOpen}
               >
