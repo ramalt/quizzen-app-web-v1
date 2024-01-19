@@ -8,9 +8,8 @@ const Feed = () => {
   const [isLoading, setLoading] = useState(true);
   const fetchData = async () => {
     try {
-      await axios.get("http://localhost:5174/api/Question").then((response) => {
+      await axios.get("question").then((response) => {
         setPosts(response.data.data);
-        console.log(response.data.data)
         setLoading(false);
       });
     } catch (error) {
