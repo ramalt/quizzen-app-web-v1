@@ -42,10 +42,10 @@ const Navbar = () => {
         </Typography>
 
         <Icons>
-          <Badge badgeContent={4} color="warning">
+          <Badge badgeContent={4} color="warning" >
             <MailIcon color="white" />
           </Badge>
-          <Avatar sx={{ width: 30, height: 30 }}>RA</Avatar>
+          <Avatar component={"a"} href="/login" sx={{ width: 30, height: 30 }}>RA</Avatar>
         </Icons>
       </StyledToolbar>
     </AppBar>

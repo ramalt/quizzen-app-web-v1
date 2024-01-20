@@ -1,11 +1,13 @@
 import { Box, LinearProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
-import axios from "axios";
+import axios from "../Api/axios";
+
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
+
   const fetchData = async () => {
     try {
       await axios.get("question").then((response) => {

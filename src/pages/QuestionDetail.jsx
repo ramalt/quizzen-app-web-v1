@@ -21,9 +21,9 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import CreateIcon from "@mui/icons-material/Create";
 import AnswerPopup from "../components/AnswerPopup";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const QuestionDetail = () => {
   const { questionId } = useParams();
@@ -32,6 +32,8 @@ const QuestionDetail = () => {
 
   const [isLoading, setLoading] = useState(true);
   const [openPopup, setOpenPopup] = useState(false);
+
+  const axiosPrivate = useAxiosPrivate();
 
   const handleOpen = () => {
     setOpenPopup(true);
@@ -43,18 +45,15 @@ const QuestionDetail = () => {
 
   const fetchData = async () => {
     try {
-      await axios
-        .get(`http://localhost:5174/api/Question/${questionId}`)
-        .then((postResponse) => {
-          setPost(postResponse.data.data);
-        });
+      await axiosPrivate.get(`Question/${questionId}`).then((postResponse) => {
+        setPost(postResponse.data.data);
+      });
 
-      await axios
-        .get(`http://localhost:5174/api/Answer?questionId=${questionId}`)
+      await axiosPrivate
+        .get(`Answer?questionId=${questionId}`)
         .then((answersResponse) => {
           setAnswers(answersResponse.data.data);
           setLoading(false);
-
         });
     } catch (error) {
       console.error("API isteği başarısız oldu:", error);
