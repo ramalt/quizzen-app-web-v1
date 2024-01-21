@@ -4,11 +4,14 @@ import useAuth from "./useAuth";
 const useRefreshToken = () => {
   const { auth, setAuth } = useAuth();
 
+  const storedAuth = JSON.parse(localStorage.getItem("auth"));
+  
   const refresh = async () => {
     try {
+      console.log(storedAuth);
       await axios
         .get(
-          `auth/refresh?token=${auth.accessToken}&refreshToken=${auth.refreshToken}`
+          `auth/refresh?token=${storedAuth.accessToken}&refreshToken=${storedAuth.refreshToken}`
         )
         .then((res) => {
           console.log(res.data.data);

@@ -28,15 +28,15 @@ function App() {
         <Layout setMode={setMode} mode={mode}>
           <Routes>
             {/* PUBLIC */}
-            <Route path="login" element={<Login />} />
             <Route path="/" element={<Feed />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="user/:userId" element={<UserDetail />} />
-            <Route path="new" element={<NewPost />} />
+            <Route path="login" element={<Login />} />
+            <Route path="test" element={<Test />} />
             {/* PRIVATE */}
             <Route element={<RequireAuth />}>
+              <Route path="user/:userId" element={<UserDetail />} />
+              <Route path="new" element={<NewPost />} />
+              <Route path="profile" element={<Profile />} />
               <Route path="question/:questionId" element={<QuestionDetail />} />
-              <Route path="test" element={<Test />} />
             </Route>
           </Routes>
         </Layout>

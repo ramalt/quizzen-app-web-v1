@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -34,14 +34,32 @@ const Login = () => {
           const accessToken = res?.data?.data.token;
           const refreshToken = res?.data?.data.refreshToken;
 
-          setAuth({ email, pass, accessToken, refreshToken });
-          navigate(from, { replace: true });
           console.log(res.data.data);
+
+          setAuth((prevAuth) => ({
+            ...prevAuth,
+            email: email,
+            pass: pass,
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+          }));
+
+          localStorage.setItem(
+            "auth",
+            JSON.stringify({
+              accessToken: accessToken,
+              refreshToken: refreshToken,
+            })
+          );
+          navigate(from, { replace: true });
+          // navigate("/test", { replace: true });
         });
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  useEffect(() => {}, [email, pass]);
+  useEffect(() => {}, [email, pass, setAuth]);
 
   return (
     <Card
