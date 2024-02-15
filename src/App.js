@@ -3,14 +3,14 @@ import Feed from "./pages/Feed";
 import { useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
 import QuestionDetail from "./pages/QuestionDetail";
 import UserDetail from "./pages/UserDetail";
 import NewPost from "./pages/NewPost";
 import Login from "./pages/Login";
-import RequireAuth from "./components/RequireAuth";
+import RequireAuth from "./components/RequireAuth.js";
 import Test from "./pages/Test";
 
 function App() {
@@ -24,23 +24,22 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <BrowserRouter>
-        <Layout setMode={setMode} mode={mode}>
-          <Routes>
-            {/* PUBLIC */}
-            <Route path="/" element={<Feed />} />
-            <Route path="login" element={<Login />} />
-            <Route path="test" element={<Test />} />
-            {/* PRIVATE */}
-            <Route element={<RequireAuth />}>
-              <Route path="user/:userId" element={<UserDetail />} />
-              <Route path="new" element={<NewPost />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="question/:questionId" element={<QuestionDetail />} />
-            </Route>
-          </Routes>
-        </Layout>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {/* PUBLIC */}
+          <Route path="/" element={<Feed />} />
+          <Route path="login" element={<Login />} />
+          <Route path="test" element={<Test />} />
+
+          <Route path="user/:userId" element={<UserDetail />} />
+          <Route path="new" element={<NewPost />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="question/:questionId" element={<QuestionDetail />} />
+
+          {/* PRIVATE */}
+          <Route element={<RequireAuth />}></Route>
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 }

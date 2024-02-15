@@ -17,9 +17,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BedtimeIcon from "@mui/icons-material/Bedtime";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import { Link, useLocation } from "react-router-dom";
 
-const Sidebar = ({ setMode, mode }) => {
+const Sidenav = ({ setMode, mode }) => {
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
@@ -121,4 +120,4 @@ const Sidebar = ({ setMode, mode }) => {
   );
 };
 
-export default Sidebar;
+export default Sidenav;

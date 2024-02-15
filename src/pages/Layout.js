@@ -1,9 +1,10 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
+import Sidebar from "../components/layout/Sidenav";
+import Navbar from "../components/layout/Navbar";
 import { Box, Container, Stack } from "@mui/material";
-import Rightbar from "../components/Rightbar";
-import BottomNav from "../components/BottomNav";
+import Rightbar from "../components/layout/Rightbar";
+import BottomNav from "../components/layout/BottomNav";
+import { Outlet } from "react-router";
 
 const Layout = ({ children, sideChildren, setMode, mode }) => {
   
@@ -18,7 +19,7 @@ const Layout = ({ children, sideChildren, setMode, mode }) => {
           justifyContent={"space-between"}
         >
           <Sidebar setMode={setMode} mode={mode} />
-          {children}
+          <Outlet />
           <Rightbar sideChildren={sideChildren}></Rightbar>
         </Stack>
       </Container>
