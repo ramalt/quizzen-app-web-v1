@@ -4,15 +4,15 @@ import useAuth from "./useAuth";
 import useRefreshToken from "./useRefreshToken";
 
 const useAxiosPrivate = () => {
-  const { auth } = useAuth();
+  // const { auth } = useAuth();
   const refresh = useRefreshToken();
-  const storedAuth = JSON.parse(localStorage.getItem("auth"));
-  console.log(storedAuth);
+
   useEffect(() => {
+    var localAuth = JSON.parse(localStorage.getItem("auth"));
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config) => {
         if (!config.headers["Authorization"]) {
-          config.headers["Authorization"] = `Bearer ${storedAuth?.accessToken}`;
+          config.headers["Authorization"] = `Bearer ${localAuth?.accessToken}`;
         }
         return config;
       },
@@ -28,7 +28,7 @@ const useAxiosPrivate = () => {
         const prevRequest = error?.config;
         if (error?.response?.status === 401 && !prevRequest?.sent) {
           prevRequest.sent = true;
-          const newAccessToken = await refresh();
+          const newAccessToken = refresh();
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
           return axiosPrivate(prevRequest);
         }
@@ -40,7 +40,7 @@ const useAxiosPrivate = () => {
       axiosPrivate.interceptors.request.eject(requestIntercept);
       axiosPrivate.interceptors.response.eject(responseIntercept);
     };
-  }, [storedAuth, refresh]);
+  }, [ refresh]);
 
   return axiosPrivate;
 };

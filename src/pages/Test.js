@@ -12,7 +12,6 @@ const Test = () => {
       const res = await axiosPrivate.get("test", {
         signal: controller.signal,
       });
-      console.log(res.data)
       setData(res.data);
     } catch (error) {
       console.error("Fetch Error:", error);

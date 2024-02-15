@@ -34,12 +34,9 @@ const Login = () => {
           const accessToken = res?.data?.data.token;
           const refreshToken = res?.data?.data.refreshToken;
 
-          console.log(res.data.data);
-
           setAuth((prevAuth) => ({
             ...prevAuth,
             email: email,
-            pass: pass,
             accessToken: accessToken,
             refreshToken: refreshToken,
           }));
@@ -51,6 +48,7 @@ const Login = () => {
               refreshToken: refreshToken,
             })
           );
+
           navigate(from, { replace: true });
           // navigate("/test", { replace: true });
         });
