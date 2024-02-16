@@ -1,35 +1,25 @@
 import { Box, LinearProgress } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PostCard from "../components/PostCard";
-import axios from "../Api/axios";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../features/post/postSlice";
 
 const Feed = () => {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-
-  const fetchData = async () => {
-    try {
-      await axios.get("question").then((response) => {
-        setPosts(response.data.data);
-        setLoading(false);
-      });
-    } catch (error) {
-      console.error("API isteği başarısız oldu:", error);
-    }
-  };
+  const dispatch = useDispatch();
+  const { posts, loading } = useSelector((state) => state.post);
 
   useEffect(() => {
-    fetchData();
+    dispatch(getPosts());
   }, []);
 
   return (
     <Box flex={4} p={1}>
-      {isLoading ? (
+      {loading ? (
         <LinearProgress color="inherit" />
       ) : (
         posts.map((p) => (
           <PostCard
+            key={p.id}
             id={p.id}
             title={p.title}
             description={p.description}

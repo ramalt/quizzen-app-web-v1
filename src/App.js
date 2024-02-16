@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
-import QuestionDetail from "./pages/QuestionDetail";
+import QuestionDetail from "./pages/PostDetail.js";
 import UserDetail from "./pages/UserDetail";
 import NewPost from "./pages/NewPost";
 import Login from "./pages/Login";
