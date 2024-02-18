@@ -1,63 +1,38 @@
 import { Button, Card, Input, Stack } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
-import axios from "../Api/axios";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import { useLoginMutation } from "../features/auth/authApiSlice";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../features/auth/authSlice";
 
 const Login = () => {
-  const { auth, setAuth } = useAuth();
+  const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
 
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  // const from = location.state?.from?.pathname || "/";
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      await axios
-        .post(
-          "auth/login",
-          {
-            email: email,
-            password: pass,
-          },
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
-        )
-        .then((res) => {
-          const accessToken = res?.data?.data.token;
-          const refreshToken = res?.data?.data.refreshToken;
-
-          setAuth((prevAuth) => ({
-            ...prevAuth,
-            email: email,
-            accessToken: accessToken,
-            refreshToken: refreshToken,
-          }));
-
-          localStorage.setItem(
-            "auth",
-            JSON.stringify({
-              accessToken: accessToken,
-              refreshToken: refreshToken,
-            })
-          );
-
-          navigate(from, { replace: true });
-          // navigate("/test", { replace: true });
-        });
+      console.log({ user, pass });
+      const userData = await login({ email: user, password: pass }).unwrap();
+      dispatch(setCredentials({ ...userData, user }));
+      setUser("");
+      setPass("");
+      navigate("/profile");
     } catch (error) {
-      console.error(error);
+      //Check  status codes here
     }
   };
 
-  useEffect(() => {}, [email, pass, setAuth]);
+  useEffect(() => {}, [user, pass]);
 
   return (
     <Card
@@ -73,7 +48,7 @@ const Login = () => {
               placeholder="Mail"
               required
               id="userName"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setUser(e.target.value)}
             />
             <Input
               placeholder="Pass"

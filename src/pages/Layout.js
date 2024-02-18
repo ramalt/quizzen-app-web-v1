@@ -7,7 +7,6 @@ import BottomNav from "../components/layout/BottomNav";
 import { Outlet } from "react-router";
 
 const Layout = ({ children, sideChildren, setMode, mode }) => {
-  
   return (
     <Box bgcolor={"background.default"} color={"text.primary"}>
       <Navbar />

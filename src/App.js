@@ -27,9 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* PUBLIC */}
-          <Route path="/" element={<Feed />} />
           <Route path="login" element={<Login />} />
-          <Route path="test" element={<Test />} />
 
           <Route path="user/:userId" element={<UserDetail />} />
           <Route path="new" element={<NewPost />} />
@@ -37,7 +35,10 @@ function App() {
           <Route path="question/:questionId" element={<QuestionDetail />} />
 
           {/* PRIVATE */}
-          <Route element={<RequireAuth />}></Route>
+          <Route element={<RequireAuth />}>
+            <Route path="test" element={<Test />} />
+            <Route path="/" element={<Feed />} />
+          </Route>
         </Route>
       </Routes>
     </ThemeProvider>
